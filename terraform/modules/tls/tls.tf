@@ -43,9 +43,9 @@ resource "tls_self_signed_cert" "ca" {
 
 locals {
   ca = {
-    "cert" = "${length(var.ca) == 0 ? tls_self_signed_cert.ca.*.cert_pem[0] : var.ca["cert"]}"
-    "key" = "${length(var.ca) == 0 ? tls_private_key.ca.*.private_key_pem[0] : var.ca["key"]}"
-    "alg" = "${length(var.ca) == 0 ? tls_private_key.ca.*.algorithm[0] : var.ca["alg"]}"
+    "cert" = "${length(var.ca["key"]) == 0 ? tls_self_signed_cert.ca.*.cert_pem[0] : var.ca["cert"]}"
+    "key" = "${length(var.ca["key"]) == 0 ? tls_private_key.ca.*.private_key_pem[0] : var.ca["key"]}"
+    "alg" = "${length(var.ca["key"]) == 0 ? tls_private_key.ca.*.algorithm[0] : var.ca["alg"]}"
   }
 }
 
