@@ -13,7 +13,7 @@
 // limitations under the License.
 
 output "ca" {
-  value = "${var.enabled == true ? local.ca.cert : ""}"
+  value = "${var.enabled == true ? local.ca["cert"]: ""}"
 }
 
 output "clients_server_cert" {

@@ -74,9 +74,9 @@ resource "tls_locally_signed_cert" "clients-server" {
   count = "${var.enabled == true ? 1 : 0}"
 
   cert_request_pem      = "${tls_cert_request.clients-server.cert_request_pem}"
-  ca_key_algorithm      = "${local.ca.alg}"
-  ca_private_key_pem    = "${local.ca.key}"
-  ca_cert_pem           = "${local.ca.cert}"
+  ca_key_algorithm      = "${local.ca["alg"]}"
+  ca_private_key_pem    = "${local.ca["key"]}"
+  ca_cert_pem           = "${local.ca["cert"]}"
   validity_period_hours = 8760
 
   allowed_uses = [
@@ -111,9 +111,9 @@ resource "tls_locally_signed_cert" "clients" {
   count = "${var.enabled == true && var.generate_clients_cert == true ? 1 : 0}"
 
   cert_request_pem      = "${tls_cert_request.clients.cert_request_pem}"
-  ca_key_algorithm      = "${local.ca.alg}"
-  ca_private_key_pem    = "${local.ca.key}"
-  ca_cert_pem           = "${local.ca.cert}"
+  ca_key_algorithm      = "${local.ca["alg"]}"
+  ca_private_key_pem    = "${local.ca["key"]}"
+  ca_cert_pem           = "${local.ca["cert"]}"
   validity_period_hours = 8760
 
   allowed_uses = [
