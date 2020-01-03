@@ -79,6 +79,11 @@ variable "eco_config_file" {
   default = ""
 }
 
+variable "eco_init_acl_users" {
+  description = "Defines the map of init-acl users to their roles"
+  type        = "map"
+}
+
 // Modules.
 
 module "tls" {
@@ -88,6 +93,7 @@ module "tls" {
   ca                    = "${var.ca}"
   common_name           = "${local.advertise_address}"
   generate_clients_cert = "${var.eco_require_client_certs}"
+  init_acl_users        = "${keys(var.eco_init_acl_users)}"
 }
 
 module "configuration" {
@@ -139,4 +145,12 @@ output "clients_cert" {
 
 output "clients_key" {
   value = "${module.tls.clients_key}"
+}
+
+output "acl_user_certs" {
+  value = "${module.tls.acl_user_certs}"
+}
+
+output "acl_user_keys" {
+  value = "${module.tls.acl_user_keys}"
 }

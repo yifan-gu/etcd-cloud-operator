@@ -31,3 +31,11 @@ output "clients_cert" {
 output "clients_key" {
   value = "${var.enabled == true && var.generate_clients_cert == true ? join("", tls_private_key.clients.*.private_key_pem) : ""}"
 }
+
+output "acl_user_certs" {
+  value = "${zipmap(var.init_acl_users, tls_locally_signed_cert.acl_users.*.cert_pem)}"
+}
+
+output "acl_user_keys" {
+  value = "${zipmap(var.init_acl_users, tls_private_key.acl_users.*.private_key_pem)}"
+}

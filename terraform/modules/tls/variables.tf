@@ -28,3 +28,8 @@ variable "common_name" {
 variable "generate_clients_cert" {
   description = "Defines whether additional clients certificates should be generated in addition to server certificates"
 }
+
+variable "init_acl_users" {
+  description = "Defines the list of the users of init-acl."
+  type        = "list"
+}
