@@ -13,7 +13,7 @@
 // limitations under the License.
 
 locals {
-  blank_ignition_config = "data:text/plain;charset=utf-8;base64,${base64encode(data.ignition_config.blank.rendered)}"
+  blank_ignition_config = "data:text/plain;charset=utf-8;base64,${base64encode(data.ignition_config.blank.id)}"
 }
 
 variable "instance_ssh_keys" {
