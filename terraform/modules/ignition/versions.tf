@@ -2,6 +2,6 @@
 terraform {
   required_version = ">= 0.12"
   required_providers {
-    ignition = "~> 1.2"
+    ignition = "~> 1.1.0"
   }
 }

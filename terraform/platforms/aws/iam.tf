@@ -38,6 +38,6 @@ data "template_file" "policy" {
 resource "aws_iam_role_policy" "instances" {
   name = var.name
   role = aws_iam_role.instances.id
-  policy = data.template_file.policy.rendered
+  policy = data.template_file.policy.id
 }
 

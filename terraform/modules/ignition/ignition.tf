@@ -14,24 +14,24 @@
 
 data "ignition_config" "main" {
   files = [
-    data.ignition_file.eco-config.rendered,
-    data.ignition_file.eco-ca.rendered,
-    data.ignition_file.eco-crt.rendered,
-    data.ignition_file.eco-key.rendered,
-    data.ignition_file.eco-health.rendered,
-    data.ignition_file.e.rendered,
+    data.ignition_file.eco-config.id,
+    data.ignition_file.eco-ca.id,
+    data.ignition_file.eco-crt.id,
+    data.ignition_file.eco-key.id,
+    data.ignition_file.eco-health.id,
+    data.ignition_file.e.id,
   ]
 
   systemd = [
-    data.ignition_systemd_unit.docker.rendered,
-    data.ignition_systemd_unit.locksmithd.rendered,
-    data.ignition_systemd_unit.update-engine.rendered,
-    data.ignition_systemd_unit.eco.rendered,
-    data.ignition_systemd_unit.eco-health.rendered,
-    data.ignition_systemd_unit.node-exporter.rendered,
+    data.ignition_systemd_unit.docker.id,
+    data.ignition_systemd_unit.locksmithd.id,
+    data.ignition_systemd_unit.update-engine.id,
+    data.ignition_systemd_unit.eco.id,
+    data.ignition_systemd_unit.eco-health.id,
+    data.ignition_systemd_unit.node-exporter.id,
   ]
 
-  users = [data.ignition_user.core.rendered]
+  users = [data.ignition_user.core.id]
 
   append {
     source = lookup(
@@ -77,7 +77,7 @@ data "template_file" "eco-service" {
 
 data "ignition_systemd_unit" "eco" {
   name    = "eco.service"
-  content = data.template_file.eco-service.rendered
+  content = data.template_file.eco-service.id
 }
 
 data "ignition_systemd_unit" "eco-health" {
