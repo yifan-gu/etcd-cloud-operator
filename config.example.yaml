@@ -31,7 +31,7 @@ eco:
     backend-quota: 2147483648
     # Defines the initial acl that will be applied to the etcd during provisioning.
     init-acl:
-      rootPassword: rootpw
+      rootPassword: rootpw # Optional
       roles:
       - name: k8s-apiserver
         permissions:
